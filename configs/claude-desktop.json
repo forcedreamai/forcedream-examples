@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "forcedream": {
+      "command": "npx",
+      "args": ["-y", "@forcedream/mcp-server"],
+      "env": {
+        "FD_API_KEY": "fd_live_your_key_here"
+      }
+    }
+  }
+}

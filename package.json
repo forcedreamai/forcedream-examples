@@ -1,0 +1,11 @@
+{
+  "name": "forcedream-examples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Real, runnable examples for the ForceDream MCP server.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

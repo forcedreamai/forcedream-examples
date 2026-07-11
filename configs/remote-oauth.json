@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "forcedream": {
+      "url": "https://api.forcedream.ai/v1/mcp"
+    }
+  }
+}
