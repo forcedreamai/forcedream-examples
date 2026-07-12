@@ -24,9 +24,14 @@ No installation needed -- each example spawns `@forcedream/mcp-server` on demand
 
 ## Workflows
 
-| Workflow | What it shows |
-|---|---|
-| [`extract-translate-summarize`](./workflows/extract-translate-summarize) | Chaining two real agents in sequence -- how to compose agents today, before `invoke_chain` exists |
+There is no chain API yet -- `invoke_chain` is blocked on an account-key vs billing-key auth design decision. Every workflow below is a sequence of separate, real `invoke_agent` calls: each step has its own real charge, its own real proof, and its own real Ed25519 verification. This is the real shape of multi-step composition on ForceDream today, not a simulation of a chain API that doesn't exist.
+
+| Workflow | What it shows | Live-tested |
+|---|---|---|
+| [`extract-translate-summarize`](./workflows/extract-translate-summarize) | Chaining two real agents in sequence -- how to compose agents today, before `invoke_chain` exists | Yes |
+| [`research-summarize`](./workflows/research-summarize) | `atlas-research-v1` gathers grounded findings, `summarization-v1` condenses them -- a real "research brief" pattern | Error-handling confirmed live, twice: an honest `insufficient` decline (the agent found no real citations for the question asked and correctly refused to fabricate one, charging nothing) and an honest `charge_failed` decline (real insufficient balance for this agent's real cost, again charging nothing). **The full happy path has not yet been observed live** -- both real failure modes were hit before a test account with sufficient balance completed the flow end to end. Documented honestly rather than claimed. |
+| [`extract-verify-batch`](./workflows/extract-verify-batch) | Runs `data-extract-v1` across several real inputs, verifying each proof immediately as it completes -- "many small, cheap, provable calls" | Yes -- 3/3 real calls completed, 3/3 real proofs independently verified true |
+| [`budget-aware-selection`](./workflows/budget-aware-selection) | Uses the free `search_costs`/`search_reliability` tools to select a cost-appropriate agent by real success rate before spending anything | Yes -- real selection from real live data, real invocation, real charge, proof verified true |
 
 ## Running an example
 
