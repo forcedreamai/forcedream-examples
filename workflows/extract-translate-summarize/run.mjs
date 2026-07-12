@@ -2,7 +2,7 @@
 // Workflow: chain multiple real agents together -- extract, then translate.
 //
 // This is not a special "chain" tool (invoke_chain doesn't exist yet -- see
-// the main README's roadmap section). It's just multiple real invoke_agent
+// the main README's roadmap section). It's just multiple real forcedream_invoke_agent
 // calls in sequence, which is how you'd compose agents today.
 //
 // Run: FD_API_KEY=fd_live_your_key node run.mjs
@@ -18,7 +18,7 @@ if (!process.env.FD_API_KEY && process.env.FD_MOCK_MODE !== 'true') {
 const server = startServer();
 
 console.log('Step 1: extract structured fields from raw text (data-extract-v1)');
-const extracted = await server.callTool('invoke_agent', {
+const extracted = await server.callTool('forcedream_invoke_agent', {
   agent_slug: 'data-extract-v1',
   task: "Extract the company name and founding year from: 'Acme Corp, founded in 1998'",
 });
@@ -26,7 +26,7 @@ console.log(JSON.stringify(extracted, null, 2));
 
 if (extracted.mock || extracted.status === 'completed') {
   console.log('\nStep 2: translate the extracted result (translation-v1)');
-  const translated = await server.callTool('invoke_agent', {
+  const translated = await server.callTool('forcedream_invoke_agent', {
     agent_slug: 'translation-v1',
     task: `Translate this into Spanish: ${JSON.stringify(extracted.output ?? extracted)}`,
   });

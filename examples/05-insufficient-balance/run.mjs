@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Example 5: What a real insufficient-balance rejection looks like.
 //
-// This is what invoke_agent returns when your fd_live_ balance hits zero --
+// This is what forcedream_invoke_agent returns when your fd_live_ balance hits zero --
 // captured from a real test where an account was actually drained to £0.00
 // and the next real call correctly rejected rather than giving away a free result.
 //
@@ -9,7 +9,7 @@
 
 console.log(`
 Real, captured output from draining a real test account to exactly £0.00
-and making the next real invoke_agent call:
+and making the next real forcedream_invoke_agent call:
 
 {
   "status": "error",

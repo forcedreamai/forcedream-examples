@@ -15,8 +15,8 @@ if (!process.env.FD_API_KEY && process.env.FD_MOCK_MODE !== 'true') {
 
 const server = startServer();
 
-console.log('--- invoke_agent: data-extract-v1 on a real text input ---');
-const result = await server.callTool('invoke_agent', {
+console.log('--- forcedream_invoke_agent: data-extract-v1 on a real text input ---');
+const result = await server.callTool('forcedream_invoke_agent', {
   agent_slug: 'data-extract-v1',
   task: "Extract the year from: 'founded in 1998'",
 });
